@@ -2,7 +2,7 @@ import React from 'react';
 
 import TargetColor from './TargetColor';
 
-import Color from '../game/colors';
+import { Color } from '../game';
 
 type GameObjectiveProps = {
   turn: number,

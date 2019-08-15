@@ -2,16 +2,14 @@ import React, { MouseEvent } from 'react';
 import { useImmer } from 'use-immer';
 
 import {
-  createGrid,
-} from './game/grid';
-import {
   GameState,
   placeColor,
-  createTargetColor,
+  randomColor,
   calculateGameState,
-} from './game/game';
-import layouts from './game/layouts';
-import Color from './game/colors';
+  createGrid,
+  layouts,
+  Color,
+} from './game';
 
 import GameGrid from './components/GameGrid';
 import GameObjective from './components/GameObjective';
@@ -22,7 +20,7 @@ function App() {
  const [game, updateGame] = useImmer({
    turn: 25,
    grid: createGrid(layouts[0]),
-   targetColor: createTargetColor(),
+   targetColor: randomColor(),
    layout: 0,
    status: GameState.Playing,
  });
@@ -44,7 +42,7 @@ function App() {
     draft.layout += 1;
     draft.turn = 25;
     draft.grid = createGrid(layouts[draft.layout % layouts.length]);
-    draft.targetColor = createTargetColor();
+    draft.targetColor = randomColor();
     draft.status = GameState.Playing;
   });
  };
@@ -53,7 +51,7 @@ function App() {
   updateGame(draft => {
     draft.turn = 25;
     draft.grid = createGrid(layouts[draft.layout % layouts.length]);
-    draft.targetColor = createTargetColor();
+    draft.targetColor = randomColor();
     draft.status = GameState.Playing;
   });
  };

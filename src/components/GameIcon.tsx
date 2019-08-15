@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Color from '../game/colors';
+import { Color } from '../game';
 
 const iconMap = {
   [Color.Any as string]: faGem,

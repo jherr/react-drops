@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from './Button';
 
-import Color from '../game/colors';
+import { Color } from '../game';
 
 type GameControlsProps = {
   onPlaceColor: (color: Color) => void,

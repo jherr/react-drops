@@ -2,7 +2,7 @@ import React from 'react';
 
 import GameIcon from './GameIcon';
 
-import Color from '../game/colors';
+import { Color } from '../game';
 
 type CellElementProps = {
   x: number,

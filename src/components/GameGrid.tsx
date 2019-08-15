@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Cell from '../game/cell';
+import { Cell } from '../game';
 
 import CellElement from './Cell';
 
