@@ -1,8 +1,21 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 
 import TargetColor from './TargetColor';
 
 import { Color } from '../game';
+
+const styleStatus = css`
+  text-align: center;
+`;
+const styleHeader = css`
+  font-size: large;
+  margin-top: 1em;
+  margin-bottom: 1em;
+`;
+const styleTurnsLeft = css`
+  font-size: xx-large;
+`;
 
 type GameObjectiveProps = {
   turn: number,
@@ -10,17 +23,17 @@ type GameObjectiveProps = {
 }
 
 export default ({ turn, target }: GameObjectiveProps ) => (
-  <div className="status">
-    <div className="header">
+  <div css={styleStatus}>
+    <div css={styleHeader}>
       Target Color
     </div>
     <TargetColor
       color={target}
     />
-    <div className="header">
+    <div css={styleHeader}>
       Turns Left
     </div>
-    <div className="turns-left">
+    <div css={styleTurnsLeft}>
       { turn }
     </div>
   </div>

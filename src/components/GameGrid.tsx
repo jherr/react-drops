@@ -1,15 +1,22 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 
 import { Cell } from '../game';
 
 import CellElement from './Cell';
+
+const container = css`
+  display: grid;
+  grid-template-columns: repeat(10 8vw);
+  grid-auto-rows: 7vw;
+`;
 
 type GameGridProps = {
   grid: Cell[],
 };
 
 export default ({ grid }: GameGridProps) => (
-  <div className="grid-container">
+  <div css={container}>
     {
       grid.map((cell: Cell) => (
         <CellElement

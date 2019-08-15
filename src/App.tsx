@@ -1,4 +1,6 @@
-import React, { MouseEvent } from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
+import { MouseEvent } from 'react';
 import { useImmer } from 'use-immer';
 
 import {
@@ -15,6 +17,11 @@ import GameGrid from './components/GameGrid';
 import GameObjective from './components/GameObjective';
 import GameControls from './components/GameControls';
 import GameStatus from './components/GameStatus';
+
+const container = css`
+  display: grid;
+  grid-template-columns: 15% 60% 23%;
+`;
 
 function App() {
  const [game, updateGame] = useImmer({
@@ -57,7 +64,7 @@ function App() {
  };
 
  return (
-  <div className="container">
+  <div css={container}>
     <div>
       {game.status === GameState.Playing ? (
         <GameObjective
