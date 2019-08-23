@@ -41,11 +41,9 @@ const styleMap: { [c in Color]: SerializedStyles } = {
   `,
 };
 
-type TargetColorProps = {
+const TargetColor = ({ color }: {
   color: Color,
-}
-
-const TargetColor = ({ color }: TargetColorProps) => (
+}) => (
   <div
     css={[target, styleMap[color]]}
   >

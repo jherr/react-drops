@@ -12,11 +12,9 @@ const container = css`
   row-gap: 1em;
 `;
 
-type GameControlsProps = {
+export default ({ onPlaceColor }: {
   onPlaceColor: (color: Color) => void,
-}
-
-export default ({ onPlaceColor }: GameControlsProps) => (
+}) => (
   <div css={container}>
     <Button
       onClick={() => onPlaceColor(Color.Green)}

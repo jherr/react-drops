@@ -25,14 +25,12 @@ const iconMap = {
   [Color.LightBlue as string]: faGhost,
 };
 
-type GameIconProps = {
+const GameIcon = ({ color, lockFlag, keyFlag, randomizeFlag }: {
   color: Color,
   lockFlag?: boolean,
   keyFlag?: boolean,
   randomizeFlag?: boolean,
-}
-
-const GameIcon = ({ color, lockFlag, keyFlag, randomizeFlag }: GameIconProps) => {
+}) => {
   if (lockFlag) {
     return <FontAwesomeIcon icon={faLock} size="2x" />;
   }

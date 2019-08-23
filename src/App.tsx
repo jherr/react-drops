@@ -4,13 +4,13 @@ import { MouseEvent } from 'react';
 import { useImmer } from 'use-immer';
 
 import {
-  GameState,
-  placeColor,
-  randomColor,
-  calculateGameState,
-  createGrid,
   layouts,
   Color,
+  GameState,
+  randomColor,
+  createGrid,
+  placeColor,
+  calculateGameState,
 } from './game';
 
 import GameGrid from './components/GameGrid';

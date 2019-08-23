@@ -36,12 +36,10 @@ const styleMap: { [c in Color]: SerializedStyles } = {
   `,
 };
 
-type ButtonProps = {
+const Button = ({ color, onClick }: {
   color: Color,
   onClick: () => void,
-}
-
-const Button = ({ color, onClick }: ButtonProps) => (
+}) => (
   <button
     css={[btn, styleMap[color]]}
     onClick={onClick}

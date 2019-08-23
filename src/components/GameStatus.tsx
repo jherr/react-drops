@@ -16,13 +16,11 @@ const styleButton = css`
   font-family: Righteous, Arial, Helvetica, sans-serif;
 `;
 
-type GameStatusProps = {
+export default ({ title, button, onClick }: {
   title: String,
   button: string,
   onClick: (evt: MouseEvent) => void,
-}
-
-export default ({ title, button, onClick }: GameStatusProps) => (
+}) => (
   <div css={styleGameStatus}>
     <div>{title}</div>
     <button onClick={onClick} css={styleButton}>

@@ -46,16 +46,6 @@ const ownedStyle = css`
   border-radius: 5px;
 `;
 
-type CellElementProps = {
-  x: number,
-  y: number,
-  color: Color,
-  owned: boolean,
-  lockFlag: boolean,
-  keyFlag: boolean,
-  randomizeFlag: boolean,
-}
-
 const CellElement = ({
   x,
   y,
@@ -64,7 +54,15 @@ const CellElement = ({
   lockFlag,
   keyFlag,
   randomizeFlag,
-}: CellElementProps) => (
+}: {
+  x: number,
+  y: number,
+  color: Color,
+  owned: boolean,
+  lockFlag: boolean,
+  keyFlag: boolean,
+  randomizeFlag: boolean,
+}) => (
   <div
     style={{
       gridColumn: `${x + 1} / span 1`,

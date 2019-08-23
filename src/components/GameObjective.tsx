@@ -17,12 +17,10 @@ const styleTurnsLeft = css`
   font-size: xx-large;
 `;
 
-type GameObjectiveProps = {
+export default ({ turn, target }: {
   turn: number,
   target: Color,
-}
-
-export default ({ turn, target }: GameObjectiveProps ) => (
+} ) => (
   <div css={styleStatus}>
     <div css={styleHeader}>
       Target Color

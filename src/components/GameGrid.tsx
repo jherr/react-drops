@@ -11,11 +11,9 @@ const container = css`
   grid-auto-rows: 7vw;
 `;
 
-type GameGridProps = {
+export default ({ grid }: {
   grid: Cell[],
-};
-
-export default ({ grid }: GameGridProps) => (
+}) => (
   <div css={container}>
     {
       grid.map((cell: Cell) => (

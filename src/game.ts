@@ -172,30 +172,6 @@ export const colorize = (cells: Cell[], color: Color): {
   };
 }
 
-export const placeColor = (cells: Cell[], color: Color): Cell[] => {
-  let changedCells: Cell[] = [];
-  let iterations = 0;
-
-  let currentCells: Cell[] = cloneDeep(cells);
-  do {
-    const {
-      newCells,
-      changed,
-    } = colorize(currentCells, color);
-    currentCells = newCells;
-    changedCells = changed;
-    if (hasKey(changed)) {
-      currentCells = unlock(newCells);
-    }
-    if (hasRandomize(changed)) {
-      currentCells = randomize(newCells);
-    }
-    iterations += 1;
-  } while (changedCells.length > 0 && iterations < 100);
-
-  return currentCells;
-}
-
 export const randomize = (cells: Cell[]): Cell[] => cells
   .map((c: Cell) => {
     c.randomize = false;
@@ -211,6 +187,14 @@ export const unlock = (cells: Cell[]): Cell[] => cells
     c.key = false;
     return c;
   });
+
+const hasWon = (cells: Cell[], targetColor: Color): boolean =>
+  getByOtherColor(cells, targetColor).length === 0;
+
+const hasLost = (cells: Cell[], targetColor: Color): boolean => (
+  getByOtherColor(cells, targetColor).length > 0 &&
+  getByColorUnOwned(cells, targetColor).length === 0
+);
 
 export const createGrid = (layout: number[][]): Cell[] => {
   let cells: Cell[] = [];
@@ -240,13 +224,29 @@ export const createGrid = (layout: number[][]): Cell[] => {
   return cells;
 };
 
-const hasWon = (cells: Cell[], targetColor: Color): boolean =>
-  getByOtherColor(cells, targetColor).length === 0;
+export const placeColor = (cells: Cell[], color: Color): Cell[] => {
+  let changedCells: Cell[] = [];
+  let iterations = 0;
 
-const hasLost = (cells: Cell[], targetColor: Color): boolean => (
-  getByOtherColor(cells, targetColor).length > 0 &&
-  getByColorUnOwned(cells, targetColor).length === 0
-);
+  let currentCells: Cell[] = cloneDeep(cells);
+  do {
+    const {
+      newCells,
+      changed,
+    } = colorize(currentCells, color);
+    currentCells = newCells;
+    changedCells = changed;
+    if (hasKey(changed)) {
+      currentCells = unlock(newCells);
+    }
+    if (hasRandomize(changed)) {
+      currentCells = randomize(newCells);
+    }
+    iterations += 1;
+  } while (changedCells.length > 0 && iterations < 100);
+
+  return currentCells;
+}
 
 export const calculateGameState = (cells: Cell[], targetColor: Color, turns: number): GameState => {
   let state: GameState = GameState.Playing;
